@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style_vid.css">
+    <title>Tercero Primaria</title>
+</head>
+<body>
+    <!-- Menú hamburguesa -->
+    <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../videos-general.html">Todos los Videos</a></li>
+			<li><a href="../material-general.html">Material didáctico</a></li>
+            <li><a href="javascript:void(0)" onclick="openModal()">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Soporte: <span class="phone-number">Ruddy Ramirez +502 5466-6085</span></p>
+        </div>
+    </div>
+
+    <h1 class="page-title">Cursos Tercero Primaria</h1>
+    <h2 class="page-subtitle">Aprendo GT</h2>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar..." onkeyup="filterItems()">
+    </div>
+    <div class="horizontal-menu">
+	        <a href="javascript:history.back()" class="menu-button-bk">Regresar</a>
+	        <a href="../index.html" class="menu-button-mm">Inicio</a>
+    </div>
+    <div id="item-gallery" class="gallery"></div>
+
+    <script>
+
+        const items = [
+            { name: "Comunicación y lenguaje", link: "./1opciones_comunicacion.html", img: "../img/edu_lenguaje.jpg" },
+			{ name: "Matemáticas", link: "./1opciones_matematicas.html", img: "../img/mate.jpg" },
+			{ name: "Medio social y natural", link: "./1opciones_medio_social.html", img: "../img/sociales.jpg" },
+	        { name: "Expresión artistica", link: "./1opciones_expresion.html", img: "../img/edu_art2.jpg" },
+	        { name: "Educación física", link: "./1opciones_educacion_fisica.html", img: "../img/edu_fisica.jpg" },
+	        { name: "Formación ciudadana", link: "./1opciones_formacion.html", img: "../img/edu_art.jpg" }
+        ];			
+        function toggleMenu() {
+            const menu = document.getElementById('hamburger-menu');
+            menu.classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+    const menu = document.getElementById('hamburger-menu');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+    // Verificar si el clic fue fuera del menú y del icono de hamburguesa
+    if (!menu.contains(event.target) && !hamburgerIcon.contains(event.target)) {
+        menu.classList.remove('active'); // Oculta el menú
+        closeModalc(); 
+    }
+});
+        function loadItems() {
+            renderItems(items);
+        }
+        function renderItems(itemsList) {
+            const gallery = document.getElementById('item-gallery');
+            gallery.innerHTML = "";
+            itemsList.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('gallery-item');
+                const itemLink = document.createElement('a');
+                itemLink.href = item.link;
+                itemLink.classList.add('gallery-link');
+                const itemImage = document.createElement('img');
+                itemImage.src = item.img; 
+                itemImage.alt = item.name;
+                const itemDescription = document.createElement('span');
+                itemDescription.innerText = item.name;
+                itemDescription.classList.add('gallery-description');
+                itemLink.appendChild(itemImage);
+                itemLink.appendChild(itemDescription);
+                itemDiv.appendChild(itemLink);
+                gallery.appendChild(itemDiv);
+            });
+        }
+
+        // Filtrar ítems en tiempo real
+        function filterItems() {
+            const searchInput = document.getElementById('search').value.toLowerCase();
+            const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput));
+            renderItems(filteredItems); // Volver a renderizar los ítems filtrados
+        }
+
+        // Cargar los ítems al cargar la página
+        document.addEventListener("DOMContentLoaded", loadItems);
+
+        // Función para abrir la modal
+function openModal() {
+    document.getElementById("contactModal").style.display = "block";
+}
+
+// Función para cerrar la modal
+function closeModal() {
+    document.getElementById("contactModal").style.display = "none";
+}
+
+// Cerrar la modal si se hace clic fuera de ella
+window.onclick = function(event) {
+    const modal = document.getElementById("contactModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+    </script>
+</body>
+</html>
