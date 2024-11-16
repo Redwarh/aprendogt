@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style_vid.css">
+    <title>Página Principal</title>
+</head>
+<body>
+    <!-- Menú hamburguesa -->
+    <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../videos-general.html">Todos los Videos</a></li>
+			<li><a href="../material-general.html">Material didáctico</a></li>
+            <li><a href="javascript:void(0)" onclick="openModal()">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Soporte: <span class="phone-number">Ruddy Ramirez +502 5466-6085</span></p>
+        </div>
+    </div>
+
+    <!-- Títulos de la página -->
+    <h1 class="page-title">Comunicación y lenguaje</h1>
+    <h2 class="page-subtitle">Aprendo GT</h2>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar..." onkeyup="filterItems()">
+    </div>
+	  <!-- Menú horizontal -->
+    <div class="horizontal-menu">
+	        <a href="javascript:history.back()" class="menu-button-bk">Regresar</a>
+	        <a href="../index.html" class="menu-button-mm">Inicio</a>
+    </div>
+
+    <!-- Contenedor de ítems -->
+    <div id="item-gallery" class="gallery"></div>
+
+    <script>
+                // Función para abrir la modal
+function openModal() {
+    document.getElementById("contactModal").style.display = "block";
+}
+
+// Función para cerrar la modal
+function closeModal() {
+    document.getElementById("contactModal").style.display = "none";
+}
+
+// Cerrar la modal si se hace clic fuera de ella
+window.onclick = function(event) {
+    const modal = document.getElementById("contactModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('hamburger-menu');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+    // Verificar si el clic fue fuera del menú y del icono de hamburguesa
+    if (!menu.contains(event.target) && !hamburgerIcon.contains(event.target)) {
+        menu.classList.remove('active'); // Oculta el menú
+        closeModalc(); 
+    }
+});
+        // Lista estática de ítems con imágenes
+        const items = [
+            { name: "Videos 1ro Primaria", link: "./videos-comunicacion1.html", img: "../img/v_1.jpg" },
+            { name: "Material 1ro Primaria", link: "./material-comunicacion1.html", img: "../img/m_1.jpg" }
+        ];			
+
+        // Función para mostrar el menú hamburguesa
+        function toggleMenu() {
+            const menu = document.getElementById('hamburger-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Función para cargar y mostrar los ítems
+        function loadItems() {
+            renderItems(items); // Mostrar los ítems al cargar
+        }
+
+        // Función para renderizar los ítems en la galería
+        function renderItems(itemsList) {
+            const gallery = document.getElementById('item-gallery');
+            gallery.innerHTML = ""; // Limpiar la galería
+
+            itemsList.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('gallery-item');
+
+                // Crear enlace para el ítem
+                const itemLink = document.createElement('a');
+                itemLink.href = item.link;
+                itemLink.classList.add('gallery-link');
+
+                // Crear imagen para el ítem
+                const itemImage = document.createElement('img');
+                itemImage.src = item.img; // Asignar la ruta de la imagen
+                itemImage.alt = item.name;
+
+                // Crear descripción del ítem
+                const itemDescription = document.createElement('span');
+                itemDescription.innerText = item.name;
+                itemDescription.classList.add('gallery-description');
+
+                // Añadir imagen y descripción al enlace
+                itemLink.appendChild(itemImage);
+                itemLink.appendChild(itemDescription);
+                itemDiv.appendChild(itemLink);
+                gallery.appendChild(itemDiv);
+            });
+        }
+
+        // Filtrar ítems en tiempo real
+        function filterItems() {
+            const searchInput = document.getElementById('search').value.toLowerCase();
+            const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput));
+            renderItems(filteredItems); // Volver a renderizar los ítems filtrados
+        }
+
+        // Cargar los ítems al cargar la página
+        document.addEventListener("DOMContentLoaded", loadItems);
+    </script>
+</body>
+</html>
