@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Material didáctico</title>
+</head>
+<body>
+    <header id="page-header">
+        <h1 class="page-title">Material didáctico</h1>
+    </header>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar..." 
+               onfocus="hideHeader()" onblur="showHeader()">
+    </div>
+    <div class="horizontal-menu">
+        <a href="javascript:history.back()" class="menu-button-bk">Regresar</a>
+        <a href="index.html" class="menu-button-mm">Inicio</a>
+    </div>
+    <div id="gallery"></div>
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" class="modal-content" src="">
+        <iframe id="modal-content" class="modal-pdf" src=""></iframe>
+        <div id="modal-caption"></div>
+    </div>
+    <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./videos-general.html">Todos los Videos</a></li>
+            <li><a href="./material-general.html">Material didáctico</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function hideHeader() {
+            document.getElementById('page-header').style.display = 'none';
+        }
+        function showHeader() {
+            document.getElementById('page-header').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

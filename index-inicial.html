@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_main.css">
+    <title>Página Inicial</title>
+</head>
+<body>
+<header>
+    <!-- Títulos de la página -->
+    <h1 class="page-title">Aprendo GT</h1>
+	
+	
+</header>
+
+    <div id="gallery-initial" class="gallery"></div>
+
+    <div id="hamburger-menu" class="hamburger-menu">
+        <span class="close-menu" onclick="toggleMenu()">&equiv;</span>
+        <ul>
+            <li><a href="pagina1.html">Página 1</a></li>
+            <li><a href="pagina2.html">Página 2</a></li>
+        </ul>
+    </div>
+
+    <span class="hamburger-icon" onclick="toggleMenu()">&equiv;</span>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const gallery = document.getElementById('gallery-initial');
+            const files = [
+                // Aquí agregas la ruta de tus imágenes, descripción y enlace:
+                'img/1.jpg, Primero Primaria, link_a_imagen1.html',
+                'img/2.jpg, Segundo Primaria, link_a_imagen2.html',
+				'img/3.jpg, Tercero Primaria, link_a_imagen3.html',
+				'img/4.jpg, Cuarto Primaria, link_a_imagen3.html',
+				'img/5.jpg, Quinto Primaria, link_a_imagen3.html',
+				'img/6.jpg, Sexto Primaria, link_a_imagen3.html'
+                
+            ];
+
+            files.forEach(file => {
+                const [filePath, description, link] = file.split(', ');
+                const item = document.createElement('div');
+                item.classList.add('gallery-item');
+
+                // Crear miniatura
+                const thumbnail = document.createElement('img');
+                thumbnail.src = filePath; // Usar el archivo de imagen
+                thumbnail.alt = description;
+
+                // Redirigir a la página al hacer clic en la miniatura
+                thumbnail.onclick = function() {
+                    window.location.href = link; // Navega al enlace específico
+                };
+
+                const desc = document.createElement('div');
+                desc.classList.add('gallery-description');
+                desc.innerHTML = description.replace(/\.(jpg|jpeg|png|gif|pdf)$/i, ''); // Eliminar la extensión
+
+                item.appendChild(thumbnail);
+                item.appendChild(desc);
+                gallery.appendChild(item);
+            });
+        });
+
+        window.toggleMenu = function () {
+            const menu = document.getElementById('hamburger-menu');
+            menu.classList.toggle('active');
+        };
+    </script>
+</body>
+</html>

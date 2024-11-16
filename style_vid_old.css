@@ -1,0 +1,238 @@
+/* Fondo general de la página */
+body {
+    background-color: #f0f8ff;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+	 font-size: 12px;
+	 background-image:url('/img/bkg.jpg');
+}
+header {
+    background-color: #ffcc00;
+	background-image:url('/img/ban1.jpg');
+	background-size: contain;
+    color: #333;
+    padding: 1rem;
+}
+/* Contenedor del buscador */
+.search-container {
+    padding: 10px;
+    background-color: #ffcf3b;
+    text-align: center;
+}
+/* Estilos para los títulos */
+.page-title {
+    text-align: center; /* Centra el título */
+    font-size: 30px; /* Tamaño del título */
+    color: #ff5722; /* Color del título */
+    margin: 20px 0; /* Margen superior e inferior */
+    font-family: 'Comic Sans MS', sans-serif; /* Fuente Comic Sans */
+}
+
+.page-subtitle {
+    text-align: center; /* Centra el subtítulo */
+    font-size: 20px; /* Tamaño del subtítulo */
+    color: #ff5722; /* Color del subtítulo */
+    margin: 10px 0; /* Margen superior e inferior */
+    font-family: 'Comic Sans MS', sans-serif; /* Fuente Comic Sans */
+}
+
+.search-container input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #ff9800;
+}
+
+/* Contenedor de la galería */
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo de cada ítem en la galería */
+.gallery {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente línea */
+    justify-content: center; /* Centrar los elementos en el contenedor */
+    gap: 20px; /* Espacio entre las tarjetas */
+    margin: 20px; /* Margen del contenedor */
+}
+
+.gallery-item {
+    background-color: #fff; /* Color de fondo de la tarjeta */
+    border: 1px solid #ddd; /* Bordes de la tarjeta */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 200px; /* Ancho fijo para cada tarjeta */
+    text-align: center; /* Centrar el texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+    transition: transform 0.2s; /* Transición suave para el efecto hover */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Efecto hover para agrandar la tarjeta */
+}
+
+.gallery-item img {
+    width: 100%; /* Hacer que la imagen ocupe todo el ancho de la tarjeta */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-top-left-radius: 8px; /* Bordes redondeados en la parte superior */
+    border-top-right-radius: 8px; /* Bordes redondeados en la parte superior */
+}
+
+.gallery-description {
+    padding: 10px; /* Espaciado dentro de la tarjeta */
+    font-family: 'Comic Sans MS', sans-serif; /* Fuente Comic Sans */
+    font-weight: bold; /* Texto en negrita */
+}
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal video {
+    display: block; /* Mostrar el video en bloque */
+    margin: auto; /* Centrar video */
+    max-width: 90%; /* Ancho máximo del video */
+    max-height: 90%; /* Alto máximo del video */
+}
+
+/* Modal imagen */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80%;
+}
+
+/* Modal PDF más pequeño */
+.modal-pdf {
+    display: none;
+    width: 70%;   /* Ajuste del tamaño del modal de PDF */
+    height: 80%;  /* Ajuste del tamaño del modal de PDF */
+    margin: auto;
+}
+
+/* Texto del modal */
+#modal-caption {
+    margin: 10px auto;
+    text-align: center;
+    color: #ccc;
+    font-size: 20px;
+}
+
+/* Botón de cerrar modal */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.close:hover,
+.close:focus {
+    color: #bbb; /* Color en hover */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambiar el cursor a puntero */
+}
+/* Estilo para el menú hamburguesa */
+.hamburger-menu {
+    position: fixed;
+    top: -100%; /* Oculto fuera de pantalla por defecto */
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    height: auto; /* Ajustamos altura automáticamente */
+    background-color: #00bcd4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: top 0.5s ease; /* Transición suave */
+    padding: 20px;
+    z-index: 1000;
+}
+
+/* Botón de hamburguesa */
+.hamburger-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.hamburger-menu.active {
+    top: 0; /* Se despliega desde arriba */
+}
+
+/* Opciones del menú */
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger-menu li {
+    margin: 20px 0;
+}
+
+.hamburger-menu a {
+    text-decoration: none;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* Botón de cerrar modificado (hamburguesa para cerrar) */
+.close-menu {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    z-index: 1001;
+}
+
+/* Estilo para el menú horizontal */
+.horizontal-menu {
+    display: flex;
+    justify-content: center; /* Centra el menú horizontalmente */
+    margin: 20px 0; /* Espaciado superior e inferior */
+}
+
+.menu-button {
+    background-color: #ff9800; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    text-decoration: none; /* Sin subrayado */
+    font-family: 'Comic Sans MS', sans-serif; /* Fuente Comic Sans */
+    font-weight: bold; /* Negrita */
+    font-size: 18px; /* Tamaño de fuente */
+    margin: 0 10px; /* Margen entre los botones */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.menu-button:hover {
+    background-color: #ff5722; /* Color de fondo al pasar el ratón */
+}

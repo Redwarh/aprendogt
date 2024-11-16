@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_vid.css">
+    <title>Material didactico</title>
+</head>
+<body>
+    <header>
+    <h4 class="page-title">Material didáctico</h4>
+    <h5 class="page-subtitle">Aprendo GT</h5>
+	    </header>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar...">
+    </div>
+
+    <!-- Menú horizontal -->
+    <div class="horizontal-menu">
+        <a href="pagina1.html" class="menu-button">Página 1</a>
+        <a href="pagina2.html" class="menu-button">Página 2</a>
+    </div>
+
+    <div id="gallery"></div>
+
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" class="modal-content" src="">
+        <iframe id="modal-content" class="modal-pdf" src=""></iframe>
+        <div id="modal-caption"></div>
+    </div>
+
+    <div id="hamburger-menu" class="hamburger-menu">
+        <span class="close-menu" onclick="toggleMenu()">&equiv;</span>
+        <ul>
+            <li><a href="pagina1.html">Página 1</a></li>
+            <li><a href="pagina2.html">Página 2</a></li>
+        </ul>
+    </div>
+
+    <span class="hamburger-icon" onclick="toggleMenu()">&equiv;</span>
+
+    <script src="script.js"></script>
+</body>
+</html>
